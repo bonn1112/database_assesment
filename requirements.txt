@@ -1,5 +1,4 @@
 asgiref==3.5.1
-backports.zoneinfo==0.2.1
 Django==3.1.5
 django-extensions==3.1.5
 django-login-required-middleware==0.8.0

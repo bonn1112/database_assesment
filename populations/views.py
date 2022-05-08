@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from database_assessment.utils import csv_reader, write_a_csv_file_response
+from database_assessment.utils import csv_reader
 from populations.models import Population
 
 
