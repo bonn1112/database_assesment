@@ -5,7 +5,3 @@ django-extensions==3.1.5
 django-login-required-middleware==0.8.0
 pytz==2022.1
 sqlparse==0.4.2
-
--r requirements-dev.txt
-gunicorn
-psycopg2
