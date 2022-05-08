@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +27,7 @@ SECRET_KEY = 'sg(5h6t)4%x24$jf#l52=(6&b+yk3gy_#vpvznq*&5aoitky8m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['107.21.0.75']
 
 # Application definition
 
@@ -103,16 +106,28 @@ WSGI_APPLICATION = 'database_assessment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangotestdb',
+        'USER': 'admin',
+        'PASSWORD': '8865akb48',
+        'HOST': 'mysql-dbms.ch1c1j0mhjkb.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     },
     'bb_product': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'bb_product.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bb_product',
+        'USER': 'admin',
+        'PASSWORD': '8865akb48',
+        'HOST': 'mysql-dbms.ch1c1j0mhjkb.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     },
     'population': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'population.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'population',
+        'USER': 'admin',
+        'PASSWORD': '8865akb48',
+        'HOST': 'mysql-dbms.ch1c1j0mhjkb.us-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     },
 }
 
