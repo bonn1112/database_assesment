@@ -38,13 +38,13 @@ pip3 install -r requirements.txt
 ## Migrations
 Use migrate command to create database tables using 
 ```bash
-python manage.py migrate
+python3 manage.py migrate
 ```
 ## Create database manager
 This application has two different database (bb_product and population table).
 To create database manager, you should create a db manager following below.
 ```bash
-$ python manage.py createsuperuser
+$ python3 manage.py createsuperuser
 
 Username: [input user name]
 0 for Super Admin User.
@@ -56,7 +56,7 @@ Password: [input password]
 ## Run Project
 Run the server on any port you want by default it can access using below
 ```bash
-python manage.py runserver
+python3 manage.py runserver
 ```
 ## Usage
 Login to the system with
