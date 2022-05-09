@@ -1,5 +1,25 @@
 # BB Product / Popuplation
 BB Product and Population is used for export and update data from CSV file to database and vice versa
+
+I have already deployed with this link.
+http://52.207.30.25:8000/login/
+
+If DNS finished, you also can see here.
+https://dbassesment.com/login
+
+## Technology
+
+[Script]
+- Python (Django)
+- Javascript (ajax)
+- Html (Bootstrap)
+
+[Database]
+- MySQL
+
+[Cloud hosting]
+- AWS (EC2, Route53, RDS)
+
 ## Installation
 
 I recommend to create venv.

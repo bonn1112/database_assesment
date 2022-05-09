@@ -30,9 +30,9 @@ def write_product_lookup_result(zip_codes, queryset):
 class UploadAndDownloadBBProductCSV(TemplateView):
     template_name = 'bb_products/products.html'
 
-    def return_message(self, request, msg, error=False):
+    def return_message(self, request, msg, error=False, content=None):
         messages.error(request, msg) if error else messages.success(request, msg)
-        return render(self.request, self.template_name)
+        return render(self.request, self.template_name, content)
 
     # for rollback transaction
     @transaction.atomic()
@@ -89,11 +89,15 @@ class UploadAndDownloadBBProductCSV(TemplateView):
 
                     update_data_list.append(product_obj)
 
+            content = {
+                'new_data_list': new_data_list,
+                "update_data_list": update_data_list
+            }
             # insert new records and update existing records
             if not new_data_list and not update_data_list:
                 return self.return_message(request=request, msg='All data is Up-to-date.')
             else:
                 BBProduct.objects.bulk_create(new_data_list)
                 BBProduct.objects.bulk_update(update_data_list, ['product', 'recorded', 'org_user', 'modified_user'])
-                return self.return_message(request=request, msg='Update Successfully.')
+                return self.return_message(request=request, content=content, msg='Update Successfully.')
 

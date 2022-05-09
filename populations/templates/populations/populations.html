@@ -59,6 +59,7 @@
             <br>
             <br>
             <br>
+{#        start update#}
             <div class="card text-center">
                 <div class="card-header">
                         <p class="h4">Upload - Data Results</p>
@@ -85,6 +86,60 @@
                     <button type="submit" class="btn btn-danger">Upload</button>
                 </form>
                 </div>
+            </div>
+{#        end update#}
+{#        start list view#}
+        <br>
+        <h2>Created new data</h2>
+            <div class="table-responsive">
+                <table class="table bg-white">
+                    <thead class="bg-info text-white">
+                        <tr>
+                            <th scope="col">Zip</th>
+                            <th scope="col">5 Mile Population</th>
+                            <th scope="col">Record Date</th>
+                            <th scope="col">ORG User</th>
+                            <th scope="col">Modified User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for new_data_list in new_data_list %}
+                        <tr>
+                            <td>{{ new_data_list.zip_code }}</td>
+                            <td>{{ new_data_list.five_mile_pop }}</td>
+                            <td>{{ new_data_list.recorded }}</td>
+                            <td>{{ new_data_list.org_user }}</td>
+                            <td>{{ new_data_list.modified_user }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        <br>
+        <h2>Updated data</h2>
+            <div class="table-responsive">
+                <table class="table bg-white">
+                    <thead class="bg-info text-white">
+                        <tr>
+                            <th scope="col">Zip</th>
+                            <th scope="col">5 Mile Population</th>
+                            <th scope="col">Record Date</th>
+                            <th scope="col">ORG User</th>
+                            <th scope="col">Modified User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for update_data_list in update_data_list %}
+                        <tr>
+                            <td>{{ update_data_list.zip_code }}</td>
+                            <td>{{ update_data_list.five_mile_pop }}</td>
+                            <td>{{ update_data_list.recorded }}</td>
+                            <td>{{ update_data_list.org_user }}</td>
+                            <td>{{ update_data_list.modified_user }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

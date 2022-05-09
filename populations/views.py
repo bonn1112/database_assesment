@@ -30,9 +30,9 @@ def write_population_lookup_result(zip_codes, queryset):
 class UploadAndDownloadPopulationsCSV(TemplateView):
     template_name = 'populations/populations.html'
 
-    def return_message(self, request, msg, error=False):
+    def return_message(self, request, msg, error=False, content=None):
         messages.error(request, msg) if error else messages.success(request, msg)
-        return render(self.request, self.template_name)
+        return render(self.request, self.template_name, content)
 
     @transaction.atomic()
     def post(self, request):
@@ -87,10 +87,14 @@ class UploadAndDownloadPopulationsCSV(TemplateView):
 
                     update_data_list.append(pop_obj)
 
+            content = {
+                'new_data_list': new_data_list,
+                "update_data_list": update_data_list
+            }
             # insert new records
             if not new_data_list and not update_data_list:
                 return self.return_message(request=request, msg='All data is Up-to-date.')
             else:
                 Population.objects.bulk_create(new_data_list)
                 Population.objects.bulk_update(update_data_list, ['five_mile_pop', 'recorded', 'org_user', 'modified_user'])
-                return self.return_message(request=request, msg='Update Successfully.')
+                return self.return_message(request=request, content=content, msg='Update Successfully.')
