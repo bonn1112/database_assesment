@@ -11,6 +11,16 @@ from database_assessment.utils import csv_reader
 
 
 def write_product_lookup_result(zip_codes, queryset):
+    """
+    write and export csv file from zip codes
+
+    Args:
+        zip_codes (List[int]): list of zip codes for looking up
+        queryset (List[queryset]): list of bb product from database
+
+    Returns:
+        HttpResponse(content_type='text/csv')
+    """
     key = 'product'
 
     response = HttpResponse(content_type='text/csv')
@@ -31,12 +41,42 @@ class UploadAndDownloadBBProductCSV(TemplateView):
     template_name = 'bb_products/products.html'
 
     def return_message(self, request, msg, error=False, content=None):
+        """
+        render template with message
+
+        Args:
+            request (any): request from view
+            msg (string): message for user
+            error (bool): error or not
+            content (any): data to show in template
+        """
         messages.error(request, msg) if error else messages.success(request, msg)
         return render(self.request, self.template_name, content)
 
     # for rollback transaction
     @transaction.atomic()
     def post(self, request):
+        """
+        1. csv for look up: look up with zip codes in csv and get data from database
+        2. csv for update data: update database from csv
+
+        Args:
+            request (any): request from view
+
+        Raises:
+            TypeError: if csv has 'N/A', raise error and nothing update
+
+        Note:
+            If the modified user in a row has not been specified, then the row is ignored.
+            If the modified user has been specified and the zip-code does not yet exist in the database,
+                then the data for that zip code should be added to the database.
+            If the modified user has been specified and the zip-code does exist,
+                then the data for that zip-code should be updated in the database.
+            If any of the rows to be inserted or updated contains an ‘N/A’ value,
+                then the data is not uploaded, and an error is displayed to the user.
+            If row’s modified user is not specified, the contents of the rest of the row do not matter.
+                It should be skipped regardless.
+        """
         csv_file_download = request.FILES.get('csv_file_download', None)
         csv_file_upload = request.FILES.get('csv_file_upload', None)
         if csv_file_download:
