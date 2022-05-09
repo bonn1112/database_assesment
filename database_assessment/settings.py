@@ -106,28 +106,16 @@ WSGI_APPLICATION = 'database_assessment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangotestdb',
-        'USER': 'admin',
-        'PASSWORD': '8865akb48',
-        'HOST': 'mysql-dbms.ch1c1j0mhjkb.us-east-1.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     },
     'bb_product': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bb_product',
-        'USER': 'admin',
-        'PASSWORD': '8865akb48',
-        'HOST': 'mysql-dbms.ch1c1j0mhjkb.us-east-1.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'bb_product.sqlite3',
     },
     'population': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'population',
-        'USER': 'admin',
-        'PASSWORD': '8865akb48',
-        'HOST': 'mysql-dbms.ch1c1j0mhjkb.us-east-1.rds.amazonaws.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'population.sqlite3',
     },
 }
 
