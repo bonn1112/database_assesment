@@ -15,8 +15,6 @@
         margin-top: 50px;
         margin-bottom: 50px;
     }
-
-
 </style>
 
 </head>
@@ -42,40 +40,52 @@
     <div class="row" id="bb_product">
         <div class="col-lg-6 offset-3">
             <h3>Population Check - 5 Mile Radius</h3>
-            <h4>Download - Results</h4>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="container-fluid p-0">
-                      <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">×</span>
-                        </button>
-                        {{ message }}
-                      </div>
+            {#start lookup#}
+            <div class="card text-center">
+                    <div class="card-header">
+                        <p class="h4">Download - Results</p>
                     </div>
-                {% endfor %}
-            {% endif %}
-            <form id="download_file_form" class="form-inline" method="post" style="margin-left: 90px;" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label class="sr-only" for="csv_file_download">CSV file to upload</label>
-                    <input type="file" class="form-control-file" accept=".csv" name="csv_file_download" id="csv_file_download">
+                <div class="card-body">
+                <form id="download_file_form" class="form-inline" method="post" style="margin-left: 90px;" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="sr-only" for="csv_file_download">CSV file to upload</label>
+                        <input type="file" class="form-control-file" accept=".csv" name="csv_file_download" id="csv_file_download">
+                    </div>
+                    <button type="submit" class="btn btn-success">Download</button>
+                </form>
                 </div>
-                <button type="submit" class="btn btn-success">Download</button>
-            </form>
+            </div>
             <br>
             <br>
             <br>
-
-            <h4>Upload - Data Results</h4>
-            <form id="upload_file_form" method="post" class="form-inline" style="margin-left: 90px;" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label class="sr-only" for="csv_file_upload">CSV file to upload</label>
-                    <input type="file" class="form-control-file" accept=".csv" name="csv_file_upload" id="csv_file_upload">
+            <div class="card text-center">
+                <div class="card-header">
+                        <p class="h4">Upload - Data Results</p>
+                 </div>
+                <div class="card-body">
+                    {% if messages %}
+                    {% for message in messages %}
+                        <div class="container-fluid p-0">
+                          <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                            {{ message }}
+                          </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form id="upload_file_form" method="post" class="form-inline" style="margin-left: 90px;" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="sr-only" for="csv_file_upload">CSV file to upload</label>
+                        <input type="file" class="form-control-file" accept=".csv" name="csv_file_upload" id="csv_file_upload">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Upload</button>
+                </form>
                 </div>
-                <button type="submit" class="btn btn-danger">Upload</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>

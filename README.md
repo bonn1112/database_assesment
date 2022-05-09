@@ -1,20 +1,38 @@
 # BB Product / Popuplation
-BB Product / Population is used for export/import data from CSV file to database and vice versa
+BB Product and Population is used for export and update data from CSV file to database and vice versa
 ## Installation
-Use the package manager [pipenv](https:https://pypi.org/project/pipenv/) to install requirements.
+
+I recommend to create venv.
+- Create a project directory
+- Change into the project directory
+- Run venv and stay activate
 ```bash
-pipenv install
+python3 -m venv <name_of_virtualenv>
+source <name_of_virtualenv>/bin/activate
+```
+
+execute requirements.txt
+```bash
+pip3 install -r requirements.txt 
 ```
 ## Migrations
 Use migrate command to create database tables using 
 ```bash
 python manage.py migrate
 ```
-Create superuser using
+## Create database manager
+This application has two different database (bb_product and population table).
+To create database manager, you should create a db manager following below.
 ```bash
-python manage.py createsuperuser
+$ python manage.py createsuperuser
+
+Username: [input user name]
+0 for Super Admin User.
+1 for BB Product User.
+2 for Population User.
+Enter your selection: [0 or 1 or 2]
+Password: [input password]
 ```
-**make sure to select the user role on database.**
 ## Run Project
 Run the server on any port you want by default it can access using below
 ```bash
@@ -25,5 +43,3 @@ Login to the system with
 ```bash
 http://127.0.0.1:8000/login/
 ```
-## Note
-Schema for models Population and BB Product can be scene in file named as **schema.txt** and UML class diagram can also be seen with the name **data_assessment_models.png**

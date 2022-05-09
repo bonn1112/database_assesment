@@ -47,6 +47,8 @@ class MultiDatabaseMiddleware(LoginRequiredMiddleware):
                 views = True
             if views:
                 return
+            if not request.user.is_authenticated:
+                return super().process_request(request)
             if request.user.is_authenticated and request.user.db_role != 0:
                 raise PermissionDenied
             return super().process_request(request)
