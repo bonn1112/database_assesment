@@ -7,6 +7,19 @@ http://52.207.30.25:8000/login/
 If DNS finished, you also can see here.
 http://datadbassessment.com:8000/login/
 
+Ex) I registered user1 and user2 for testing. (I did not registered admin user because of security.)
+
+- bb product
+```bash
+username: user1
+password: test
+```
+- population
+```bash
+username: user2
+password: test
+```
+
 ## Technology
 
 [Script]
