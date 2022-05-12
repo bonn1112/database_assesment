@@ -5,7 +5,7 @@ I have already deployed with this link.
 http://52.207.30.25:8000/login/
 
 If DNS finished, you also can see here.
-https://dbassesment.com/login
+http://datadbassessment.com:8000/login/
 
 ## Technology
 
