@@ -30,8 +30,10 @@ password: test
 [Database]
 - MySQL
 
-[Cloud hosting]
+[Cloud Hosting]
 - AWS (EC2, Route53, RDS)
+- NGINX
+- Gunicorn
 
 ## Installation
 
